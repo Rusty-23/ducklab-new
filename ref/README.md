@@ -169,3 +169,15 @@ etc
 
 
 
+
+# FOR DEV
+Open docker container in the terminal
+```
+docker exec -it ducklab-aws-ref-1 bash
+```
+
+Inside the container, enter the following:
+```
+php artisan migrate
+php artisan db:seed
+```

@@ -49,8 +49,8 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
 RUN php artisan key:generate
-RUN php artisan migrate
-RUN php artisan db:seed
+# RUN php artisan migrate
+# RUN php artisan db:seed
 
 # Enable Apache rewrite module
 RUN a2enmod rewrite

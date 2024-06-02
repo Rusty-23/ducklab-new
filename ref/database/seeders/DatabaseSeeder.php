@@ -36,6 +36,7 @@ class DatabaseSeeder extends Seeder
             FeeSeeder::class,
             FeeInvoiceSeeder::class,
             FeeInvoiceRecordSeeder::class,
+            WorldSeeder::class
         ]);
     }
 }
