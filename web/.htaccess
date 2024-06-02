@@ -1,0 +1,10 @@
+RewriteEngine On
+# RewriteBase /var/www/html/
+RewriteBase /
+
+SetEnv BASE_URL "http://localhost:8800/"
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !\.(js|css|png|jpg|json.php|api.php)$
+RewriteRule ^(.*)$ index.php?slug=$1 [L,QSA]
