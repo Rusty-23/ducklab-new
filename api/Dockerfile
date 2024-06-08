@@ -1,55 +1,27 @@
-# Use the official PHP image with Apache
-FROM php:8.2-apache
+# Use a standard Node.js image
+FROM node:20
 
-# Set the working directory
-WORKDIR /var/www/html
+# Set working directory
+WORKDIR /app
 
-# Install required dependencies
-RUN apt-get update && apt-get install -y \
-    libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    libzip-dev \
-    zip \
-    unzip \
-    curl
+# Copy package.json and install dependencies
+COPY package*.json ./
+RUN npm install
 
-# Install PHP extensions
-RUN docker-php-ext-install \
-    pdo_mysql \
-    mbstring \
-    exif \
-    pcntl \
-    bcmath \
-    gd \
-    intl \
-    zip
+# Create a non-root user for the application (optional)
+# RUN adduser -D appuser  # Uncomment if you want a non-root user
 
-# Install Node.js and npm
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
-RUN apt-get install -y nodejs
+# Switch to the non-root user (optional)
+# USER appuser  # Uncomment if you want to run as non-root user
 
-# Install Composer
-COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
+# Copy your application code
+COPY . .
 
-# Copy the Laravel app files to the container
-COPY . /var/www/html
+# Expose the port where your Express app listens (replace 3000 with your actual port)
+EXPOSE 3000
 
-# Install Laravel dependencies
-RUN composer install --no-interaction --optimize-autoloader --no-dev
+# Install nodemon
+RUN npm install -g nodemon
 
-# Generate the application key
-RUN php artisan key:generate
-
-# Set the appropriate permissions
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
-
-# Enable Apache rewrite module
-RUN a2enmod rewrite
-
-# Expose the port on which the app will run
-EXPOSE 80
-
-# Start the Apache web server
-CMD ["apache2-foreground"]
+# Start the application using the command you specify in your package.json
+CMD [ "npm", "start" ]
