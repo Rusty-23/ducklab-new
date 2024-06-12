@@ -8,6 +8,7 @@ const cors = require('cors');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const coursesRouter = require('./routes/courses');
+const lecturesRouter = require('./routes/lectures');
 const app = express();
 
 // Enable CORS for all origins
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api/courses', coursesRouter);
+app.use('/api/lectures', lecturesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

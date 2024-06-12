@@ -24,4 +24,4 @@ EXPOSE 3000
 RUN npm install -g nodemon
 
 # Start the application using the command you specify in your package.json
-CMD [ "npm", "start" ]
+CMD ["npm", "start"]
