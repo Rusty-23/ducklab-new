@@ -40,6 +40,8 @@ services:
       - ./api:/var/www/html
     ports:
       - "8801:3000"
+    tty: true
+    stdin_open: true
     depends_on:
       - db
     environment:
