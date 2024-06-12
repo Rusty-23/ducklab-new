@@ -1,13 +1,16 @@
+"use client";
+import { KindeProvider } from "@kinde-oss/kinde-auth-nextjs";
 import { Flowbite, ThemeModeScript } from "flowbite-react";
 import { Inter } from "next/font/google";
 import { twMerge } from "tailwind-merge";
-import "./globals.css";
+
 import { flowbiteTheme } from "./theme";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const RootLayout = function ({ children }) {
   return (
+    <KindeProvider>
     <html lang="en">
       <head>
       <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
@@ -18,6 +21,7 @@ const RootLayout = function ({ children }) {
         <Flowbite theme={{ theme: flowbiteTheme }}>{children}</Flowbite>
       </body>
     </html>
+    </KindeProvider>
   );
 };
 

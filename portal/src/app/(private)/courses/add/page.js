@@ -59,7 +59,7 @@ export default function CoursesAdd() {
 
     return (
         <div className="p-5">
-            <h1 className="text-3xl font-bold mb-10">Add Courses</h1>
+            <h1 className="text-3xl font-bold mb-10">Add Course</h1>
 
             <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                 <div>
@@ -162,24 +162,14 @@ export default function CoursesAdd() {
                         list="year-level"
                     />
                     <datalist id="year-level">
-                        <option value="1st Year"></option>
-                        <option value="2nd Year"></option>
-                        <option value="3rd Year"></option>
-                        <option value="4th Year"></option>
+                        <option value="1st"></option>
+                        <option value="2nd"></option>
+                        <option value="3rd"></option>
+                        <option value="4th"></option>
                     </datalist>
                 </div>
                 <button type="submit">Create</button>
             </form>
-            {/* Create a button to submit the form */}
-            {/* On submit, send the form data to the API */}
-            {/* Redirect to the courses page after successful submission */}
-            {/* Display an error message if the submission fails */}
-            {
-                // Error message
-            }
-            {
-                // Success message
-            }
         </div>
     );
 }

@@ -8,8 +8,9 @@ const Uploader = ({
     accept = "image/*",
     multiple = false,
     onUpload = () => {},
+    defaultValue = null,
 }) => {
-    const [previewURL, setPreviewURL] = useState(null);
+    const [previewURL, setPreviewURL] = useState(defaultValue);
 
     const handleFileChange = (event) => {
         try {

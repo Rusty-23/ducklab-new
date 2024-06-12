@@ -32,7 +32,7 @@ export const DashboardSidebar = function () {
           <Sidebar.Item href="/courses" icon={HiViewBoards}>
             Course
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiInbox}>
+          <Sidebar.Item href="/lectures" icon={HiInbox}>
             Lectures
           </Sidebar.Item>
           <Sidebar.Item href="#" icon={HiUser}>

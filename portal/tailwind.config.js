@@ -94,8 +94,11 @@ module.exports = {
         "leading-9",
         "shadow-lg",
     ],
-    // darkMode: "class",
-    plugins: [flowbite],
+    darkMode: "class",
+    plugins: [
+        flowbite,
+        require('@tailwindcss/line-clamp'),        
+    ],
     presets: [
         // require('@acmecorp/base-tailwind-config')
     ],
