@@ -3,9 +3,6 @@
     <div class="main-contact">
         <div class="contact-content">
             <img src="<?=BASE_URL?>assets/img/logo.png">
-            <li><a href="https://www.facebook.com/ptc1993" target="_blank">Facebook</a></li>
-            <li><a href="https://www.instagram.com/explore/locations/8485762/pateros-metro-manila-philippines/?hl=en" target="_blank">Instagram</a></li>
-            <li><a href="https://twitter.com/ptceduph/status/619545690105098240" target="_blank">Twitter</a></li>
         </div>
 
         <div class="contact-content">
@@ -16,11 +13,9 @@
         </div>
 
         <div class="contact-content">
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Register</a></li>
-            <li><a href="https://drive.google.com/file/d/16eT3bO7Q8o_p4dhSudRcmMvDytO33NMO/view?usp=sharing" target="_blank"">Instructor</a></li>
-            <li><a href="https://drive.google.com/file/d/16eT3bO7Q8o_p4dhSudRcmMvDytO33NMO/view?usp=sharing" target="_blank"">Dashboard</a></li>
+            <li><a href="https://www.facebook.com/ptc1993" target="_blank">Facebook</a></li>
+            <li><a href="https://www.instagram.com/explore/locations/8485762/pateros-metro-manila-philippines/?hl=en" target="_blank">Instagram</a></li>
+            <li><a href="https://twitter.com/ptceduph/status/619545690105098240" target="_blank">Twitter</a></li>
         </div>
 
         <div class="contact-content">
@@ -33,7 +28,7 @@
 </section>
 
 <div class="last-text">
-    <p>© 2023 BSIT-2A HCI. All rights reserved.</p>
+    <p>© 2024 BSIT-3A Pateros Technological College. All rights reserved.</p>
 </div>
 
 

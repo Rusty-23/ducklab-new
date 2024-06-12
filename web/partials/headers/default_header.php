@@ -1,6 +1,6 @@
 <header>
     <a href="<?=BASE_URL?>" class="logo">
-        <img src="<?=BASE_URL?>assets/img/logo.png">
+        <img src="<?=BASE_URL?>assets/img/name.png">
     </a>
 
     <div class="header-icons">

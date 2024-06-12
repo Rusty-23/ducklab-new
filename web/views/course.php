@@ -52,11 +52,10 @@
             </div>
             {{/each}}
             {{#if (isTrue subject.completion_date)}}
-                <div style ="text-align: center; margin-top: 35px;">
-                    <button class="btn btn-lg btn-success btn-block col-md-10" type="button" onclick="redirectToPrint({{subject.subject_id}})">
-                        Print Certificate
-                    </button>
-                </div>
+            <!-- test exam section -->
+            <div id="lec-{{id}}" class="lecture">
+                <button type="button" class="collapsible" style="color: black" disabled>{{title}}<i class="fas fa-lock"></i></button>
+            
             {{/if}}
         </div>
     </section>
