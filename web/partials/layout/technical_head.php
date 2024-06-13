@@ -2,6 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <?php if (isset($_SESSION['current_user'])) { ?><meta name="AUTH-ID" content="<?=$_SESSION['current_user']['id']?>"><?php } ?>
 <meta name="BASE-URL" content="<?=BASE_URL?>">
+<meta name="API-URL" content="<?=API_URL?>">
 
 <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">

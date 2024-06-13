@@ -3,6 +3,7 @@ RewriteEngine On
 RewriteBase /
 
 SetEnv BASE_URL "http://localhost:8800/"
+SetEnv API_URL "http://localhost:8801/"
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f

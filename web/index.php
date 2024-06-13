@@ -1,43 +1,12 @@
 <?php
 include_once "./config.php";
+include_once "./routes.php";
 session_start();
 
 $templateLayout = "default";
 $title = "DuckLabs";
 $path = "404";
 
-$routes = [
-    # PUBLIC
-    "login" => [
-        "title" => "DuckLabs",
-        "scope" => "Public",
-    ],
-    "register" => [
-        "title" => "DuckLabs | Register",
-        "scope" => "Public",
-    ],
-
-    # PRIVATE
-    "home" => [
-        "title" => "DuckLabs",
-        "scope" => "Private",
-    ],
-    "course" => [
-        "title" => "DuckLabs | Course",
-        "scope" => "Private",
-    ],
-    "certificate" => [
-        "title" => "DuckLabs | Certificate",
-        "scope" => "Private",
-        "template" => "shell"
-    ],
-
-    # SYSTEM PAGE
-    "404" => [
-        "title" => "DuckLabs | Not Found",
-        "scope" => "Public",
-    ],
-];
 if (isset($_GET['slug'])) {
     $slug_param = $_GET['slug'];
     
@@ -63,6 +32,15 @@ if (isset($_GET['slug'])) {
         if (isset($_SESSION['current_user'])) {
             $path = "course";
             $course_slug = str_replace("course/", "", $_GET['slug']);
+        } else {
+            $path = "login";
+        }
+    }
+
+    if (str_starts_with($_GET['slug'], "exam/")) {
+        if (isset($_SESSION['current_user'])) {
+            $path = "exam";
+            $exam_slug = str_replace("exam/", "", $_GET['slug']);
         } else {
             $path = "login";
         }

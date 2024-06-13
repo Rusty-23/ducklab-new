@@ -12,6 +12,7 @@
 </script>
 <script type="text/javascript" src="<?=BASE_URL?>assets/js/app.js"></script>
 <?php if ($path == "course") {?><script type="text/javascript" src="<?=BASE_URL?>/assets/js/course.js"></script><?php }?>
+<?php if ($path == "exam") {?><script type="text/javascript" src="<?=BASE_URL?>/assets/js/exam.js"></script><?php }?>
 <?php if ($path == "home") {?>
     <script type="module" src="<?=BASE_URL?>assets/js/three-canvas.js"></script>
     <script type="text/javascript" src="<?=BASE_URL?>assets/js/home.js"></script>
