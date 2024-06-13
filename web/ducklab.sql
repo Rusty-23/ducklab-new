@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Jun 12, 2024 at 04:49 AM
+-- Generation Time: Jun 13, 2024 at 07:00 PM
 -- Server version: 8.0.37
 -- PHP Version: 8.2.8
 
@@ -32,6 +32,7 @@ CREATE TABLE `enrolled_subjects` (
   `user_id` int NOT NULL,
   `subject_id` int NOT NULL,
   `progress` int NOT NULL DEFAULT '0',
+  `exam_score` float NOT NULL,
   `completion_date` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -39,33 +40,33 @@ CREATE TABLE `enrolled_subjects` (
 -- Dumping data for table `enrolled_subjects`
 --
 
-INSERT INTO `enrolled_subjects` (`id`, `user_id`, `subject_id`, `progress`, `completion_date`) VALUES
-(1, 1, 6, 6, NULL),
-(2, 1, 1, 11, 'June 07, 2023'),
-(3, 2, 1, 1, NULL),
-(4, 2, 2, 1, NULL),
-(5, 1, 3, 1, NULL),
-(7, 1, 4, 1, NULL),
-(8, 5, 1, 7, 'May 07, 2023'),
-(9, 5, 2, 1, NULL),
-(10, 5, 3, 1, NULL),
-(11, 5, 4, 1, NULL),
-(12, 5, 6, 2, NULL),
-(14, 1, 2, 11, 'June 08, 2023'),
-(15, 7, 1, 10, 'June 08, 2023'),
-(16, 7, 3, 3, NULL),
-(17, 12, 2, 11, 'May 02, 2024'),
-(18, 12, 5, 14, 'May 17, 2024'),
-(19, 16, 1, 10, 'May 03, 2024'),
-(20, 16, 2, 3, NULL),
-(21, 8, 2, 11, 'May 16, 2024'),
-(22, 8, 4, 1, NULL),
-(23, 8, 5, 1, NULL),
-(24, 8, 6, 1, NULL),
-(25, 8, 1, 10, 'May 16, 2024'),
-(26, 8, 3, 11, 'May 17, 2024'),
-(27, 18, 1, 10, 'June 12, 2024'),
-(28, 18, 4, 1, NULL);
+INSERT INTO `enrolled_subjects` (`id`, `user_id`, `subject_id`, `progress`, `exam_score`, `completion_date`) VALUES
+(1, 1, 6, 6, 0, NULL),
+(2, 1, 1, 11, 0, 'June 07, 2023'),
+(3, 2, 1, 1, 0, NULL),
+(4, 2, 2, 1, 0, NULL),
+(5, 1, 3, 1, 0, NULL),
+(7, 1, 4, 1, 0, NULL),
+(8, 5, 1, 7, 80, 'May 07, 2023'),
+(9, 5, 2, 1, 0, NULL),
+(10, 5, 3, 1, 0, NULL),
+(11, 5, 4, 1, 0, NULL),
+(12, 5, 6, 2, 0, NULL),
+(14, 1, 2, 11, 0, 'June 08, 2023'),
+(15, 7, 1, 10, 0, 'June 08, 2023'),
+(16, 7, 3, 3, 0, NULL),
+(17, 12, 2, 11, 0, 'May 02, 2024'),
+(18, 12, 5, 14, 0, 'May 17, 2024'),
+(19, 16, 1, 10, 0, 'May 03, 2024'),
+(20, 16, 2, 3, 0, NULL),
+(21, 8, 2, 11, 0, 'May 16, 2024'),
+(22, 8, 4, 1, 0, NULL),
+(23, 8, 5, 1, 0, NULL),
+(24, 8, 6, 1, 0, NULL),
+(25, 8, 1, 10, 0, 'May 16, 2024'),
+(26, 8, 3, 11, 0, 'May 17, 2024'),
+(27, 18, 1, 10, 0, 'June 12, 2024'),
+(28, 18, 4, 1, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -196,7 +197,52 @@ INSERT INTO `login` (`id`, `username`, `password`) VALUES
 (15, 'nora', 'er65ry'),
 (16, 'nora', 'awsd'),
 (17, 'new', 'new'),
-(18, 'russ', 'russ');
+(18, 'russ', 'russ'),
+(19, 'russ', 'russ'),
+(20, 'russ', 'russ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `questions`
+--
+
+CREATE TABLE `questions` (
+  `id` int NOT NULL,
+  `subject_id` int NOT NULL,
+  `question` varchar(255) NOT NULL,
+  `choice_1` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `choice_2` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `choice_3` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `choice_4` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `answer` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `questions`
+--
+
+INSERT INTO `questions` (`id`, `subject_id`, `question`, `choice_1`, `choice_2`, `choice_3`, `choice_4`, `answer`) VALUES
+(1, 1, 'What is the capital of France?', 'Paris', 'Berlin', 'Rome', 'Madrid', '1'),
+(2, 1, 'What is the tallest mountain in the world?', 'Mount Everest', 'K2', 'Kangchenjunga', 'Lhotse', '1'),
+(3, 1, 'What is the largest river in the world?', 'Nile River', 'Amazon River', 'Yangtze River', 'Mississippi River', '1'),
+(4, 1, 'What is the world\'s most populous country?', 'China', 'India', 'United States', 'Indonesia', '1'),
+(5, 1, 'What is the currency of Japan?', 'Japanese Yen', 'Chinese Yuan', 'Korean Won', 'US Dollar', '1'),
+(6, 3, 'Who painted the Mona Lisa?', 'Leonardo da Vinci', 'Michelangelo', 'Vincent van Gogh', 'Claude Monet', '1'),
+(7, 3, 'What is the chemical symbol for water?', 'H2O', 'CO2', 'NaCl', 'NH3', '1'),
+(8, 3, 'What is the process of turning a liquid into a gas called?', 'Evaporation', 'Condensation', 'Precipitation', 'Sublimation', '1'),
+(9, 3, 'How many planets are in our solar system?', '8', '9', '10', '11', '1'),
+(10, 3, 'What is the ozone layer made up of?', 'Oxygen', 'Nitrogen', 'Carbon dioxide', 'Helium', '1'),
+(11, 2, 'What is the capital of the Philippines?', 'Manila', 'Cebu City', 'Davao City', 'Iloilo City', '1'),
+(12, 2, 'What is the largest island in the Philippines?', 'Luzon', 'Mindanao', 'Visayas', 'Palawan', '1'),
+(13, 2, 'What is the national hero of the Philippines?', 'Jose Rizal', 'Andres Bonifacio', 'Lapu-Lapu', 'Emilio Aguinaldo', '1'),
+(14, 2, 'What is the official language of the Philippines?', 'Filipino', 'English', 'Spanish', 'Tagalog', '1'),
+(15, 2, 'What is the Philippines known for?', 'Beautiful beaches', 'Rich history and culture', 'Friendly people', 'All of the above', '4'),
+(16, 2, 'What is a popular Filipino dish?', 'Adobo', 'Sinigang', 'Lechon', 'Pancit', '1'),
+(17, 2, 'What is a traditional Filipino dance?', 'Tinikling', 'Cariñosa', 'Maglalatik', 'Sublian', '1'),
+(18, 2, 'What is the highest mountain in the Philippines?', 'Mount Apo', 'Mount Pulag', 'Mount Kanlaon', 'Mount Hibok-Hibok', '1'),
+(19, 2, 'What is the name of the active volcano near Taal Lake?', 'Taal Volcano', 'Mayon Volcano', 'Kanlaon Volcano', 'Mount Pinatubo', '1'),
+(20, 2, 'What is a popular Philippine jeepney decorated with?', 'Chromes and religious icons', 'Leather seats and neon lights', 'Racing stripes and spoilers', 'None of the above', '1');
 
 -- --------------------------------------------------------
 
@@ -260,6 +306,12 @@ ALTER TABLE `login`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `questions`
+--
+ALTER TABLE `questions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `subjects`
 --
 ALTER TABLE `subjects`
@@ -285,7 +337,13 @@ ALTER TABLE `lectures`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `questions`
+--
+ALTER TABLE `questions`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `subjects`
