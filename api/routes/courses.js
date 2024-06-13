@@ -37,6 +37,37 @@ router.get("/", async function (req, res, next) {
     res.json(row);
 });
 
+router.post("/", async function (req, res, next) {
+    const { name, slug, description, image_source, preview_image, duration, year_level, prof } = req.body;
+    if (!name || !slug || !description || !image_source || !preview_image || !duration || !year_level || !prof) {
+        res.status(400).json({ error: "name, slug, description, image_source, preview_image, duration, year_level, and prof are required" });
+        return;
+    }
+    const [row] = await db.query(`
+        INSERT INTO 
+          subjects (
+            name,
+            slug,
+            description,
+            image_source,
+            preview_image,
+            duration,
+            year_level,
+            prof
+          ) VALUES (
+           '${name}',
+           '${slug}',
+           '${description}',
+           '${image_source}',
+           '${preview_image}',
+           '${duration}',
+           '${year_level}',
+           '${prof}'
+          )
+    `);
+    res.json(row);
+});
+
 router.get("/:slug", async function (req, res, next) {
     const slug = req.params.slug;
     const prof = req.query.prof;

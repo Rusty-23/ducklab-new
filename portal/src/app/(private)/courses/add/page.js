@@ -4,6 +4,28 @@ import { useState } from "react";
 import Uploader from "@/components/Uploader";
 import { useRouter } from "next/navigation";
 
+
+const createCourse = async (data) => {
+    try {
+        const response = await fetch(`http://localhost:8801/api/courses`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        });
+        
+        if (!response.ok)
+            throw new Error(`Failed to create course: ${response.statusText}`); 
+
+        return await response.json();
+    } catch (error) {
+        console.log({ error });
+        return error;
+    }
+};
+
+
 export default function CoursesAdd() {
     const router = useRouter();
     const [imageSource, setImageSource] = useState({
@@ -18,36 +40,28 @@ export default function CoursesAdd() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (!imageSource.base64)
-            setImageSource({
-                base64: null,
-                isValid: false,
-            });
+        // if (!imageSource.base64)
+        //     setImageSource({
+        //         base64: null,
+        //         isValid: false,
+        //     });
 
-        if (!previewImage.base64)
-            setPreviewImage({
-                base64: null,
-                isValid: false,
-            });
+        // if (!previewImage.base64)
+        //     setPreviewImage({
+        //         base64: null,
+        //         isValid: false,
+        //     });
 
         const formData = new FormData(event.target);
-        const data = Object.fromEntries(formData.entries());
+        const data = {
+            ...Object.fromEntries(formData.entries()),
+            im
+            
+        };
         try {
             console.log(data);
-            // const response = await fetch("/api/courses", {
-            //     method: "POST",
-            //     headers: {
-            //         "Content-Type": "application/json",
-            //     },
-            //     body: JSON.stringify(data),
-            // });
-
-            // if (!response.ok) {
-            //     throw new Error(
-            //         `Failed to create course: ${response.statusText}`
-            //     );
-            // }
-
+            const response = await createCourse(data);
+            console.log(response);
             // // Redirect to the courses page after successful submission
             // router.push("/courses");
         } catch (error) {

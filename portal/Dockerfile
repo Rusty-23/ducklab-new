@@ -5,8 +5,9 @@ FROM node:18-slim
 WORKDIR /app
 
 # Copy package files and install dependencies (adjust for yarn or pnpm)
+# COPY package.json ./
 COPY package*.json ./
-RUN apt-get update && apt-get install -y --no-install-recommends build-essential libssl-dev zlib1g-dev libffi-dev
+# RUN apt-get update && apt-get install -y --no-install-recommends build-essential libssl-dev zlib1g-dev libffi-dev
 
 RUN npm install
 
