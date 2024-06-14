@@ -1,5 +1,9 @@
 const apiURL = document.querySelector('meta[name="API-URL"]').content;
 
+Handlebars.registerHelper("isTrue", function (value) {
+    return !!value;
+});
+
 const getSubjectSlug = () => {
     const paths = location.pathname.split("/");
     return paths[paths.length - 1];

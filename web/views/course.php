@@ -12,9 +12,9 @@
 <script id="template" type="text/x-handlebars-template">
     <!-- <h1>{{subject.title}}</h1> -->
     <section class="math" id="math" style="background-image: url({{subject.image_source}})">
-        <div class="math-text">
+        <div class="math-text" style="text-shadow: 0px 1px 0px white;">
             <h6>PTC online learning platform</h6>
-			<h1><b>{{subject.title}}</b></h1>
+			<h1 style="color: black; text-shadow: 0px 4px 4px white;"><b>{{subject.title}}</b></h1>
            <p>{{subject.prof}}</p>
         </div>
     </section>
@@ -54,7 +54,7 @@
             {{#if (isTrue subject.completion_date)}}
             <!-- test exam section -->
             <div id="lec-{{id}}" class="lecture">
-                <button type="button" class="collapsible" style="color: black" disabled>{{title}}<i class="fas fa-lock"></i></button>
+                <button type="button" class="collapsible" style="color: black" onclick="window.location.href='/exam.php/{{subject.slug}}questions/result'" >Exam in {{subject.title}}</i></button>
             
             {{/if}}
         </div>

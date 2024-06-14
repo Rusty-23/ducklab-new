@@ -840,6 +840,8 @@ body.modal-open {
 .math-text h1 {
     font-size: var(--big-font);
     margin: 15px 0 15px;
+    text-shadow: 1px 1px 0px #080000;
+    color: #ffffff;
 }
 
 .math-text h6 {
