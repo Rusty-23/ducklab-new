@@ -14,6 +14,7 @@ if (isset($_GET['user_id']) && isset($_GET['slug'])) {
                 enrolled_subjects.user_id, 
                 enrolled_subjects.subject_id, 
                 subjects.name AS 'title',
+                subjects.slug,
                 subjects.description,
                 subjects.image_source,
                 subjects.prof,

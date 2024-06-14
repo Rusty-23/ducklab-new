@@ -193,7 +193,7 @@ router.post("/:slug/questions/result", async function (req, res, next) {
     }
 
     const score = (correctAnswer / answers.length) * 100;
-
+    const subjectId = answers[0].subject_id;
     query = `
       UPDATE
         enrolled_subjects
@@ -201,13 +201,14 @@ router.post("/:slug/questions/result", async function (req, res, next) {
         exam_score = ${score}
       WHERE
         user_id = '${userId}'
-      AND subject_id = '${answers[0].subject_id}'
+      AND subject_id = '${subjectId}'
     `;
     const [row] = await db.query(query);
     console.log(row);
 
     res.json({
         score,
+        subject_id: subjectId,
     });
 });
 

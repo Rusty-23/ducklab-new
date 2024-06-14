@@ -63,7 +63,22 @@ const handleOnSubmit = (event) => {
         payload,
         (data) => {
             console.log(data);
-            // alert("result submitted");
+            if (data.score < 60) {
+                alert("You have failed the exam. Please try again.");
+                $(event.target).trigger("reset");
+                $("html, body").animate(
+                    {
+                        scrollTop: 0,
+                    },
+                    1000
+                );
+                return;
+            }
+            window.open(
+                `${location.origin}/certificate?subject_id=${data.subject_id}`,
+                "_blank"
+            );
+            location.assign(location.origin);
         },
         (error) => {
             console.error(error);

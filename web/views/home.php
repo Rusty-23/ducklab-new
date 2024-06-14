@@ -93,9 +93,13 @@ $enrolled_subjects = $controller->get_enrolled_subjects();
 
 for ($i = 0; $i < count($subjects); $i++) {
     $is_enrolled = false;
+	$is_passed = false;
     for ($j = 0; $j < count($enrolled_subjects); $j++) {
         $enrolled_subject = $enrolled_subjects[$j]['subject_id'];
         if ($enrolled_subject == $subjects[$i]['id']) {
+			if ($enrolled_subjects[$j]['exam_score'] > 60) {
+				$is_passed = true;
+			}
             $is_enrolled = true;
         }
     }
@@ -110,7 +114,11 @@ for ($i = 0; $i < count($subjects); $i++) {
 						<h6><?=$subjects[$i]['duration']?></h6>
 					</div>
 					<div class="card-footer text-center" style="color: black; border: none; overflow: hidden">
+						<?php if ($is_passed) { ?>
+						<h6 style="color: green">Passed</h6>
+						<?php } else { ?>
 						<h6>Enrolled</h6>
+						<?php } ?>
 					</div>
 				</a>
 				<?php } else {?>

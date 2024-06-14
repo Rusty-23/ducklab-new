@@ -54,7 +54,7 @@
             {{#if (isTrue subject.completion_date)}}
             <!-- test exam section -->
             <div id="lec-{{id}}" class="lecture">
-                <button type="button" class="collapsible" style="color: black" onclick="window.location.href='/exam.php/{{subject.slug}}questions/result'" >Exam in {{subject.title}}</i></button>
+                <button type="button" class="collapsible" style="color: black" onclick="window.location.href='/exam/{{subject.slug}}'" >Exam in {{subject.title}}</i></button>
             
             {{/if}}
         </div>

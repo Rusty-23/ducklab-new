@@ -7,21 +7,17 @@
         <h1>Exam</h1>
         <form id="form" method="post">
         {{#each questions}}
-            <div class="question" style=" border: 1px solid black; border-radius: 10px; padding: 10px;">
+            <div class="question mb-3" style="border: 1px solid black; border-radius: 10px; padding: 10px;">
                 <p style="font-weight: bold; font-size: 20px">{{question}}</p>
                 <div style=" border: 1px solid black; border-radius: 10px; padding: 10px; margin-top: 10px;">
-                <input type="radio" name="__answer__{{id}}" value="1" required>{{choice_1}}<br>
-                <input type="radio" name="__answer__{{id}}" value="2" required>{{choice_2}}<br>
-                <input type="radio" name="__answer__{{id}}" value="3" required>{{choice_3}}<br>
-                <input type="radio" name="__answer__{{id}}" value="4" required>{{choice_4}}<br>
+                <div class="form-check form-check-inline"><input class="form-check-input" type="radio" id="__answer__{{id}}_1" name="__answer__{{id}}" value="1" required><label class="form-check-label" for="__answer__{{id}}_1">{{choice_1}}</label></div>
+                <div class="form-check form-check-inline"><input class="form-check-input" type="radio" id="__answer__{{id}}_2" name="__answer__{{id}}" value="2" required><label class="form-check-label" for="__answer__{{id}}_2">{{choice_2}}</label></div>
+                <div class="form-check form-check-inline"><input class="form-check-input" type="radio" id="__answer__{{id}}_3" name="__answer__{{id}}" value="3" required><label class="form-check-label" for="__answer__{{id}}_3">{{choice_3}}</label></div>
+                <div class="form-check form-check-inline"><input class="form-check-input" type="radio" id="__answer__{{id}}_4" name="__answer__{{id}}" value="4" required><label class="form-check-label" for="__answer__{{id}}_4">{{choice_4}}</label></div>
                 </div>
             </div>
         {{/each}}
-        <button type="submit">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-     
-        {{#if (isTrue subject.completion_date)}}
-            <a href="./certificate.php/{{subject.slug}}">Certificate</a>
-        {{/if}}
     </div>
 </script>
