@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Jun 13, 2024 at 07:00 PM
+-- Generation Time: Jun 14, 2024 at 04:55 AM
 -- Server version: 8.0.37
 -- PHP Version: 8.2.8
 
@@ -47,11 +47,11 @@ INSERT INTO `enrolled_subjects` (`id`, `user_id`, `subject_id`, `progress`, `exa
 (4, 2, 2, 1, 0, NULL),
 (5, 1, 3, 1, 0, NULL),
 (7, 1, 4, 1, 0, NULL),
-(8, 5, 1, 7, 80, 'May 07, 2023'),
+(8, 5, 1, 10, 100, 'May 07, 2023'),
 (9, 5, 2, 1, 0, NULL),
 (10, 5, 3, 1, 0, NULL),
-(11, 5, 4, 1, 0, NULL),
-(12, 5, 6, 2, 0, NULL),
+(11, 5, 4, 18, 0, 'June 14, 2024'),
+(12, 5, 6, 3, 0, 'June 13, 2024'),
 (14, 1, 2, 11, 0, 'June 08, 2023'),
 (15, 7, 1, 10, 0, 'June 08, 2023'),
 (16, 7, 3, 3, 0, NULL),
@@ -349,7 +349,7 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
