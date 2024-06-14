@@ -4,12 +4,15 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const coursesRouter = require('./routes/courses');
 const lecturesRouter = require('./routes/lectures');
 const app = express();
+
+app.use(bodyParser.json({limit: '200mb', extended: true}));
 
 // Enable CORS for all origins
 app.use(cors());

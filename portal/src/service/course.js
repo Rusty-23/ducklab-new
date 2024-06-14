@@ -62,4 +62,18 @@ export const getCourseLecturesBySlug = async (slug, prof) => {
     }
 };
 
-
+export const deleteCourse = async (id) => {
+    try {
+        const response = await fetch(
+            `${process.env.API_URL}/api/courses/${id}`,
+            {
+                method: "DELETE",
+            }
+        );
+        if (!response.ok)
+            throw new Error(`Failed to fetch data: ${response.statusText}`);
+    } catch (error) {
+        console.log({ error });
+        return error;
+    }
+}

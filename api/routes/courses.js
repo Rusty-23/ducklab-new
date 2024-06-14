@@ -38,9 +38,11 @@ router.get("/", async function (req, res, next) {
 });
 
 router.post("/", async function (req, res, next) {
-    const { name, slug, description, image_source, preview_image, duration, year_level, prof } = req.body;
-    if (!name || !slug || !description || !image_source || !preview_image || !duration || !year_level || !prof) {
-        res.status(400).json({ error: "name, slug, description, image_source, preview_image, duration, year_level, and prof are required" });
+    const { name, slug, description, duration, year_level, prof } = req.body;
+    if (!name || !slug || !description || !duration || !year_level || !prof) {
+        res.status(400).json({
+            error: "name, slug, description, duration, year_level, and prof are required",
+        });
         return;
     }
     const [row] = await db.query(`
@@ -58,13 +60,40 @@ router.post("/", async function (req, res, next) {
            '${name}',
            '${slug}',
            '${description}',
-           '${image_source}',
-           '${preview_image}',
+           '',
+           '',
            '${duration}',
            '${year_level}',
            '${prof}'
           )
     `);
+    res.json(row);
+});
+
+router.post("/:id/upload", async function (req, res, next) {
+    const { key, base64 } = req.body;
+    const id = req.params.id;
+    if (!id || !key || !base64) {
+        res.status(400).json({ error: "id, key, and base64 are required" });
+        return;
+    }
+    const query = `
+    UPDATE subjects SET
+      ${key} = "${base64}"
+    WHERE id = ${id}
+    `;
+    console.log(query);
+    const [row] = await db.query(query);
+    res.json(row);
+});
+
+router.delete("/:id", async function (req, res, next) {
+    const id = req.params.id;
+    if (!id) {
+        res.status(400).json({ error: "id is required" });
+        return;
+    }
+    const [row] = await db.query(`DELETE FROM subjects WHERE id = ${id}`);
     res.json(row);
 });
 
@@ -175,7 +204,7 @@ router.post("/:slug/questions/result", async function (req, res, next) {
       AND subject_id = '${answers[0].subject_id}'
     `;
     const [row] = await db.query(query);
-    console.log(row);   
+    console.log(row);
 
     res.json({
         score,

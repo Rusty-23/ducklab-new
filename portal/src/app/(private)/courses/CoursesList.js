@@ -54,6 +54,7 @@ export default function CoursesList({ courses }) {
                                     size="small"
                                     color="red"
                                     icon={<HiTrash />}
+                                    href={`/courses/${course.slug}/delete`}
                                 >
                                     Delete
                                 </Button>

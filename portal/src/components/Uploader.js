@@ -21,7 +21,10 @@ const Uploader = ({
                     reader.onloadend = () => {
                         const base64 = reader.result;
                         setPreviewURL(base64);
-                        onUpload(base64);
+                        onUpload({
+                            isValid: true,
+                            base64: base64,
+                        });
                     };
                     reader.readAsDataURL(file);
                 } else {
@@ -49,7 +52,10 @@ const Uploader = ({
                         className="absolute top-[-10px] right-[-10px] p-1 bg-gray-200 hover:bg-gray-300  z-10 border rounded-4xl"
                         onClick={() => {
                             setPreviewURL(null);
-                            onUpload(null);
+                            onUpload({
+                                isValid: true,
+                                base64: null,
+                            });
                         }}
                     >
                         <HiX className="h-4 w-4" />
